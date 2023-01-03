@@ -1,0 +1,19 @@
+version: "3"
+services:
+  redis:
+    image: redis
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+  voting:
+    build: ./vote/
+    ports:
+      - 2002:80
+  worker:
+    build: ./worker/
+  result:
+    build: ./result/
+    ports:
+      - 2003:80
